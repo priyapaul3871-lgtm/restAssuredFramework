@@ -20,7 +20,9 @@ public class Builder {
          req.setBaseUri(Endpoints.baseUrl);
          req.addHeader("Content-Type", Headers.contentType);
          req.addHeader("x-api-key", Headers.apikey);
-         RequestSpecification spec =  req.build();
+
+        //RequestSpecification is an interface in Rest Assured that represents the complete HTTP request configuration before the API call is sent. It stores all request details such as Base URI, Headers, Query parameters, Path parameters, Authentication, Request body, Content type and Cookies.
+         RequestSpecification spec =  req.build(); //After build(), the spec object contains Base URI and Headers.
          return  spec;
     }
 }

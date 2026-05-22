@@ -15,7 +15,7 @@ public class CreateUser {
     //Here, UserId is declared at class level so that we can use userId value in any method of the class.
     String userId;
 
-    @BeforeClass
+    @BeforeClass        //@BeforeClass runs once before tests inside CreateUser class only.
    // @BeforeTest(validatePutUser())
     public void setupId() {
         Response res = ApiClient.post("/api/users", "{ \"name\": \"Tanveer\", \"job\": \"QA Engineer\" }");

@@ -28,9 +28,11 @@ public class ApiClient {
     }*/
 
      //Using RequestSpecBuilder class
+    // RestAssured internally handles the concatenation of the baseUri and the endpoint path.
+    //spec(reqspec) contains the base URI (i.e. "https://reqres.in") and .get(endpoint) contains the resource path (i.e. "/api/users"). So, RestAssured automatically combines them internally like baseUri + endpoint (i.e. "https://reqres.in/api/users")
     public static Response get(String endpoint)
     {
-        RequestSpecification reqspec = Builder.getRequestSpec();
+        RequestSpecification reqspec = Builder.getRequestSpec();   //Calls a method named getRequestSpec() from the Builder class. getRequestSpec() method returns a RequestSpecification object which get is stored in the variable reqspec
         Response getResponse = RestAssured
                 .given()
                 .spec(reqspec)      //Start building the API request and apply all configurations stored inside reqspec
@@ -53,7 +55,7 @@ public class ApiClient {
 
     public static Response put(String endpoint, String payload)
     {
-        RequestSpecification reqspec = Builder.getRequestSpec();  //Calls a method named getRequestSpec() from the Builder class. getRequestSpec() method returns a RequestSpecification object which get is stored in the variable reqspec
+        RequestSpecification reqspec = Builder.getRequestSpec();
         Response putResponse;
         putResponse = RestAssured
                 .given()
