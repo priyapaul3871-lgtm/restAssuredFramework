@@ -14,17 +14,27 @@ public class Builder {
     .addHeader() → add request header
     .build() → create RequestSpecification object
     return → send it back to caller
+    RequestSpecification is an interface in Rest Assured that represents the complete HTTP request configuration before the API call is sent. It stores all request details such as Base URI, Headers, Query parameters, Path parameters, Authentication, Request body, Content type and Cookies.
    */
     public static RequestSpecification getRequestSpec() {
         RequestSpecBuilder req = new RequestSpecBuilder();
          req.setBaseUri(Endpoints.baseUrl);
          req.addHeader("Content-Type", Headers.contentType);
          req.addHeader("x-api-key", Headers.apikey);
-
-        //RequestSpecification is an interface in Rest Assured that represents the complete HTTP request configuration before the API call is sent. It stores all request details such as Base URI, Headers, Query parameters, Path parameters, Authentication, Request body, Content type and Cookies.
          RequestSpecification spec =  req.build(); //After build(), the spec object contains Base URI and Headers.
          return  spec;
     }
+
+    //We can also write the below way in one line without closing every line of code with semicolon.
+
+   /* public static RequestSpecification getRequestSpec1() {
+        RequestSpecification spec1 = new RequestSpecBuilder()
+        .setBaseUri(Endpoints.baseUrl)
+        .addHeader("Content-Type", Headers.contentType)
+        .addHeader("x-api-key", Headers.apikey)
+        .build();
+         return  spec1;
+    }*/
 }
 
 

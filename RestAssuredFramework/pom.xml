@@ -52,6 +52,12 @@
             <version>2.17.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.poi</groupId>          <!-- Apache POI to read Excel !-->
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.5</version>
+        </dependency>
+
     </dependencies>
 
 </project>

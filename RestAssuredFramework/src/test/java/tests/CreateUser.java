@@ -18,7 +18,7 @@ public class CreateUser {
     @BeforeClass        //@BeforeClass runs once before tests inside CreateUser class only.
    // @BeforeTest(validatePutUser())
     public void setupId() {
-        Response res = ApiClient.post("/api/users", "{ \"name\": \"Tanveer\", \"job\": \"QA Engineer\" }");
+        Response res = ApiClient.post("/api/users", "{ \"name\": \"Tanveer\", \"job\": \"QA Engineer\" }");    // Here, res variable datatype is Response because ApiClient.post() returns a Response object.
         userId = res.jsonPath().getString("id");
         APIAssertions.verifyStatusCode(res,201, "Setup Method: ");  //In setupId(), validate POST success too. This ensures setup itself succeeded.
     }
