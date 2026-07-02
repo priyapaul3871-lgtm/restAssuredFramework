@@ -18,15 +18,15 @@
         <!-- REST Assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
+            <artifactId>rest-assured</artifactId>          <!-- This library is used to send HTTP requests(GET, POST, PUT, DELETE, etc.) and helps to validate response -->
             <version>5.3.0</version>
-            <!--<scope>test</scope>-->
+            <!--<scope>test</scope>-->                      <!-- dependency scope is upto src/test folder that means this dependency works upto test folder only it can't be used in src/main folder. If you want to use it in src/main folder then remove this line <scope>test</scope> -->
         </dependency>
 
         <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
+            <artifactId>testng</artifactId>                  <!-- It is test framework controls test execution. Supports annotations like @Test, @BeforeClass -->
             <version>7.4.0</version>
             <!--<scope>test</scope>-->
         </dependency>
@@ -34,29 +34,50 @@
         <!-- JSON Path -->
         <dependency>
             <groupId>io.rest-assured</groupId>
-            <artifactId>json-path</artifactId>
+            <artifactId>json-path</artifactId>             <!-- It is used to traverse the JSON responses -->
             <version>5.4.0</version>
             <!--<scope>test</scope>-->
         </dependency>
 
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
+            <artifactId>hamcrest</artifactId>               <!-- It is used for assertions (validations). Works nicely with Rest Assured’s .then().body() syntax -->
             <version>2.2</version>
             <!--<scope>test</scope>-->
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <artifactId>jackson-databind</artifactId>              <!-- It is used for serialization and deserialization. Converts Java object to Json and vice versa -->
             <version>2.17.0</version>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.poi</groupId>          <!-- Apache POI to read Excel !-->
-            <artifactId>poi-ooxml</artifactId>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>                    <!-- Apache POI to read Excel !-->
             <version>5.2.5</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>       <!-- Validates the JSON structure against a schema -->
+            <version>5.5.6</version>
+            <!--<scope>test</scope>-->
+        </dependency>
+
+        <dependency>
+            <groupId>net.javacrumbs.json-unit</groupId>
+            <artifactId>json-unit-assertj</artifactId>            <!-- Compares the actual JSON response with an expected JSON -->
+            <version>2.38.0</version>
+        </dependency>
+
+
+      <!--  <dependency>
+            <groupId>net.javacrumbs.json-unit</groupId>
+            <artifactId>json-unit-assertj</artifactId>
+            <version>3.5.0</version>
+            <scope>test</scope>
+        </dependency> -->
 
     </dependencies>
 
