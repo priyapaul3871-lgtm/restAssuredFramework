@@ -18,12 +18,22 @@ public class Builder {
    */
     public static RequestSpecification getRequestSpec() {
         RequestSpecBuilder req = new RequestSpecBuilder();
-         req.setBaseUri(Endpoints.baseUrl);
-         req.addHeader("Content-Type", Headers.contentType);
-         req.addHeader("x-api-key", Headers.apikey);
-         RequestSpecification spec =  req.build(); //After build(), the spec object contains Base URI and Headers.
-         return  spec;
+
+        //Fetching baseUrl from getConfigFromMVN() under configReader class
+        req.setBaseUri(ConfigReader.getConfigFromMVN("url"));
+
+        //Fetching baseUrl from getConfig() under configReader class
+        //req.setBaseUri(ConfigReader.readPropertyFile("url"));
+
+        //Fetching baseUrl from Endpoint class
+        //req.setBaseUri(Endpoints.baseUrl);
+
+        req.addHeader("Content-Type", Headers.contentType);
+        req.addHeader("x-api-key", Headers.apikey);
+        RequestSpecification spec = req.build(); //After build(), the spec object contains Base URI and Headers.
+        return spec;
     }
+}
 
     //We can also write the below way in one line without closing every line of code with semicolon.
 
@@ -35,6 +45,5 @@ public class Builder {
         .build();
          return  spec1;
     }*/
-}
 
 

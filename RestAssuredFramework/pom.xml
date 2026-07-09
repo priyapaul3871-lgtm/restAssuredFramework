@@ -70,7 +70,11 @@
             <artifactId>json-unit-assertj</artifactId>            <!-- Compares the actual JSON response with an expected JSON -->
             <version>2.38.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>4.1.7</version>
+        </dependency>
 
       <!--  <dependency>
             <groupId>net.javacrumbs.json-unit</groupId>

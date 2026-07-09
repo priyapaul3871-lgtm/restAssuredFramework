@@ -77,4 +77,29 @@ public class ApiClient {
                 .delete(endpoint);
         return deleteResponse;
     }
-}
+
+    public static String getFirstNameWithPolling(String endpoint, int maxRetries) {
+        for (int i = 1; i <= maxRetries; i++) {
+            Response res = get(endpoint);         // Calling existing get() method to get the response to avoid code duplication and keep the polling method cleaner.
+            if (res.getStatusCode() == 200) {     // check status code should be 200
+                String firstName = res.jsonPath().getString("data[0].first_name");
+                if (firstName != null && !firstName.isEmpty()) {   //Check first_name should not be null and empty then only return first_name value.
+                    return firstName;
+                }
+            }
+            try {
+                //Thread.sleep(1000) tells the current thread to pause (sleep) for 1000 milliseconds (1 second).
+                Thread.sleep(1000);     //Thread.sleep() can throw an InterruptedException, so Java requires it to be inside a try-catch block (or the method must declare throws InterruptedException).
+            }
+            catch (InterruptedException e) {      //InterruptedException is a checked exception that is thrown when a thread that is waiting, sleeping, or blocked is interrupted by another thread. In simple terms, it tells the thread to stop waiting because someone has requested that you wake up.
+                Thread.currentThread().interrupt();    //To restore the interrupt flag to true so that higher-level code can still detect that the thread was interrupted and handle it appropriately.
+            }
+        }
+
+        // Since the getFirstNameWithPolling() method returns a String, every execution path must either return a String or terminate by throwing an exception.
+        // If the polling loop completes without finding first_name, there is no valid String to return. Therefore, we throw a RuntimeException.
+        // This prevents a 'Missing return statement' compilation error and clearly indicates that the polling failed after all retry attempts.
+        // Remember: throw is not returning a value. It is terminating the method by raising an exception.
+        throw new RuntimeException("first_name not found after " + maxRetries + " attempts.");
+    }
+    }

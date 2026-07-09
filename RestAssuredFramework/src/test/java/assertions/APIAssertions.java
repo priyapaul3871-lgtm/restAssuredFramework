@@ -2,6 +2,7 @@ package assertions;
 
 import io.restassured.response.Response;
 import org.testng.Assert;
+import utils.ReportManager;
 
 import java.sql.SQLOutput;
 
@@ -16,6 +17,7 @@ public class APIAssertions {
             }
             catch (AssertionError  e)   // RestAssured throws AssertionError Exception. Here, e is the exception object.
             {
+                ReportManager.fail("Status Code Validation Failed");
                 System.out.println(apiName+ " Expected status code: " + expectedStatusCode);  //e.getMessage() is used to get the error message from an exception object. It retrieves the actual reason why the assertion failed.
                 System.out.println(apiName+ " Actual status code: " +response.getStatusCode());
                 Assert.fail(apiName+ " Status code validation failed: " + e.getMessage());  //Assert.fail() is used to explicitly fail the test case. It forces the test to fail immediately so that framework/report clearly marks the test case as failed.
